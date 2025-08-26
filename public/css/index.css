@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #0f172a, #ff6600, #1e293b, #ff7518);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+/* Animación del fondo */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Contenedor del login */
+.login-container {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+  animation: fadeIn 1s ease;
+}
+
+/* Logo */
+.logo {
+  width: 90px;
+  margin-bottom: 10px;
+}
+
+/* Título */
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Etiquetas */
+label {
+  color: #f5f5f5;
+  font-size: 0.9rem;
+  display: block;
+  text-align: left;
+  margin: 10px 0 5px;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ff7518;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff; /* Texto escrito en blanco */
+}
+
+/* Placeholder en blanco */
+input::placeholder {
+  color: #ffffff; /* Blanco puro */
+  opacity: 0.9;
+}
+
+/* Estilo para el ícono del ojo */
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ffffff; /* Blanco puro */
+  font-size: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+
+.toggle-password:hover {
+  opacity: 0.7; /* efecto al pasar el mouse */
+}
+
+
+/* Botón */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #ff6600;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #ff7518;
+  transform: scale(1.05);
+}
+
+/* Mensaje de error */
+.error {
+  color: white;
+  font-size: 0.85rem;
+  min-height: 1em;
+}
+
+/* Nota */
+.note {
+  color: #ddd;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px;
+  }
+}

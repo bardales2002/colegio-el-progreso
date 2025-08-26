@@ -1,0 +1,130 @@
+:root{
+  --orange:#ff7a00;
+  --paper:#fff;
+  --ink:#0b1326;
+  --muted:#64748b;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0; font-family:'Montserrat', system-ui, Arial, sans-serif; line-height:1.6; color:#0f172a;
+  background: repeating-linear-gradient(45deg,#ff8000,#ff8000 10px,#ff9933 10px,#ff9933 20px);
+}
+
+.back-btn{
+  position:fixed; top:14px; left:14px; z-index:10;
+  background:#000; color:#ffffff; text-decoration:none; padding:10px 14px;
+  border-radius:10px; font-weight:700; box-shadow:0 6px 14px rgba(0,0,0,.25);
+}
+
+.wrap{ max-width:1180px; margin:90px auto 40px; padding:0 16px; }
+.logo-card{ background:#fff; border-radius:18px; padding:22px; box-shadow:0 18px 50px rgba(0,0,0,.2); margin-bottom:18px; }
+.title{ text-align:center; font-weight:800; font-size:clamp(1.2rem,3.6vw,2.2rem); color:#ff6f00; text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000; }
+.subtitle{ text-align:center; color:#334155; margin:6px 0 0; }
+
+.card{ background:#fff; border-radius:18px; padding:22px; box-shadow:0 22px 60px rgba(0,0,0,.22); margin-bottom:18px; }
+.section-title{ margin:0 0 12px; font-weight:800; color:#ff7a00; }
+
+.toolbar{
+  display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:10px; justify-content:space-between;
+}
+.filters{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.search{ min-width:240px; padding:10px 12px; border:2px solid #ff9a3c; border-radius:10px; outline:none; }
+.filter-select{ min-width:240px; border:2px solid #ff9a3c; border-radius:10px; padding:10px 12px; }
+input[type="number"],input[type="date"],input[type="month"], input[type="text"], textarea{
+  border:2px solid #ff9a3c; padding:10px 12px; border-radius:10px; outline:none; min-width:160px;
+}
+textarea{ width:100%; }
+
+.btn-primary{
+  background:var(--orange); color:#fff; border:none; padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer;
+}
+.btn-outline{
+  background:#f1f5f9; border:1px solid #cbd5e1; color:#0f172a; padding:10px 14px; border-radius:10px; cursor:pointer;
+}
+
+.table-wrap{ overflow:auto; border-radius:12px; border:1px solid #f1f5f9; }
+table{ width:100%; border-collapse:collapse; background:#fff; }
+thead th{ text-align:left; background:#fff7f1; position:sticky; top:0; z-index:1; }
+td, th{ padding:10px 12px; border-bottom:1px solid #f1f5f9; }
+.badge{ font-weight:700; }
+
+@media (max-width:720px){
+  .filter-select, .search{ flex:1 1 100%; min-width:unset; }
+}
+
+/* etiqueta de subsección dentro del formulario */
+.subsection{
+  width:100%;
+  background:#fff7f1;
+  border-left:4px solid var(--orange);
+  padding:10px 12px;
+  border-radius:10px;
+  font-weight:800;
+  color:#ff7a00;
+}
+
+/* ----------- Solicitud (hoja A4) ----------- */
+.sheet.a4{
+  width: 210mm;
+  background:#fff; border:1px solid #000; margin: 10px auto; padding: 14mm 15mm;
+}
+.sheet-inner{ color:#111; font-size:13.5px; }
+.sheet-header{ text-align:center; margin-bottom:10px; }
+.colegio{ font-weight:800; }
+.colegio-sub{ font-size:12px; }
+
+.box{ border:1px solid #111; padding:12px 14px; margin:12px 0; }
+.box-title{ text-align:center; font-weight:800; margin-bottom:6px; }
+.line{ margin-bottom:8px; }
+.mt6{ margin-top:6px; }
+.mt8{ margin-top:8px; }
+.mt10{ margin-top:10px; }
+.mt12{ margin-top:12px; }
+.mt18{ margin-top:18px; }
+
+.u{
+  display:inline-block;
+  min-width:120px;
+  border-bottom:1px solid #111;
+  padding: 0 6px;
+}
+.motivo{
+  min-height:60px; border:1px solid #111; padding:6px 8px; margin-top:6px;
+}
+
+.firma-line{
+  width: 60%;
+  border-top: 1px solid #111;
+  margin: 18px auto 2px;
+  text-align:center;
+}
+
+/* firmas coord/director (línea justo encima del nombre) */
+.firma-grid{
+  display:grid;
+  grid-template-columns: 1fr 160px 1fr;
+  gap: 18px;
+  align-items: end;
+}
+.firma-blank{
+  border-top:1px solid #111;
+  margin-bottom: 4px; /* deja la línea justo encima del nombre */
+}
+.firma-name{ text-align:center; }
+
+.aprob{
+  text-align:center;
+  font-weight:800;
+  align-self:center;
+}
+
+/* Contabilidad (en blanco) */
+.cont-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.blank-line{ display:inline-block; border-bottom:1px solid #111; height:1em; vertical-align:bottom; }
+.w80{ width:80px; }

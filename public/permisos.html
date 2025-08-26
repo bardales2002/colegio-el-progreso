@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Permisos</title>
+
+  <link rel="stylesheet" href="css/permisos.css" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script defer src="js/permisos.js"></script>
+</head>
+<body>
+  <a class="back-btn" href="dashboard.html">Volver al inicio</a>
+
+  <main class="wrap">
+    <div class="logo-card">
+      <h1 class="title">Permisos de Docentes y Encargados</h1>
+      <p class="subtitle">Los usuarios deben de registrar los permisos para que los administradores los aprueben o rechacen.</p>
+    </div>
+
+    <!-- Botón para desplegar/ocultar el formulario (solo USERS) -->
+    <section id="toggleCard" class="card" style="display:none;">
+      <button id="btnToggleForm" class="btn-primary btn-wide" aria-expanded="false">➕ Agregar permiso</button>
+    </section>
+
+    <!-- Formulario (se oculta de entrada; users lo abren con el botón, admin nunca lo ve) -->
+    <section id="formSection" class="card" style="display:none;">
+      <h2 class="section-title">Nuevo permiso</h2>
+      <form id="frmPermiso" class="form-grid" autocomplete="off">
+        <div class="field">
+          <label for="docente">Docente</label>
+          <select id="docente" required>
+            <option value="">Seleccione…</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="tipo">Tipo</label>
+          <select id="tipo" required>
+            <option value="enfermedad">Enfermedad</option>
+            <option value="personal">Personal</option>
+            <option value="comision">Comisión</option>
+            <option value="capacitacion">Capacitación</option>
+            <option value="duelo">Duelo</option>
+            <option value="maternidad_paternidad">Maternidad/Paternidad</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="desde">Desde</label>
+          <input id="desde" type="date" required>
+        </div>
+
+        <div class="field">
+          <label for="hasta">Hasta</label>
+          <input id="hasta" type="date" required>
+        </div>
+
+        <div class="field field-100">
+          <label for="obs">Observaciones (opcional)</label>
+          <textarea id="obs" rows="2" maxlength="500" placeholder="Detalle breve…"></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="submit">Guardar</button>
+          <button class="btn-secondary" type="reset">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Listado -->
+    <section class="card">
+      <h1>Lista de permisos</h1>
+      <div class="toolbar">
+        <div class="dates">
+          <label>Rango</label>
+          <input type="date" id="from">
+          <input type="date" id="to">
+          <button id="btnHoy" class="btn-sm">Hoy</button>
+          <button id="btnSemana" class="btn-sm">Semana</button>
+        </div>
+
+        <select id="fDocente" class="filter-select">
+          <option value="">Todos los docentes</option>
+        </select>
+
+        <input id="buscar" class="search" placeholder="Buscar por nombre, código…">
+
+        <div class="export">
+          <button id="btnPdf" class="btn-outline">PDF</button>
+          <button id="btnExcel" class="btn-outline">Excel</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="tablaPermisos">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Docente</th>
+              <th>Código</th>
+              <th>Tipo</th>
+              <th>Desde</th>
+              <th>Hasta</th>
+              <th>Observaciones</th>
+              <th>Estado</th>
+              <th>Creado</th>
+              <th></th> <!-- Acciones -->
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colegio - Infraestructura y Ubicación</title>
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/infraestructura.css">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+
+  <!-- Botón volver -->
+  <a href="dashboard.html" class="back-btn">Volver al inicio</a>
+
+  <!-- Contenedor principal -->
+  <main class="wrap">
+    <section class="card">
+      <h1 class="title">Infraestructura</h1>
+      <img src="img/colegio.jpeg" alt="Foto del Colegio" class="main-img">
+      <p>
+        Nuestro colegio cuenta con más de 50 años de experiencia en la formación de jóvenes con valores, responsabilidad y un alto nivel académico. 
+        Nos ubicamos en el corazón de la ciudad, facilitando el acceso a todos nuestros estudiantes y personal docente.
+      </p>
+
+      <h2 class="subtitle">Ubicación</h2>
+      <div id="map"></div>
+
+      <footer class="footer">
+        &copy; 2024 Colegio de Ciencias Comerciales El Progreso
+      </footer>
+    </section>
+  </main>
+
+  <!-- JS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="js/infraestructura.js"></script>
+</body>
+</html>

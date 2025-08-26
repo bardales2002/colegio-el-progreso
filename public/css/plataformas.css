@@ -1,0 +1,137 @@
+:root{
+  --orange:#fff7f1;    /* tono claro para títulos (coherente con otras páginas) */
+  --orange-2:#ff7a00;  /* naranja principal */
+  --ink:#0f172a;
+  --paper:#ffffff;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family:'Montserrat', system-ui, Segoe UI, Arial, sans-serif;
+  line-height:1.7;
+  color:var(--ink);
+
+  /* Fondo naranja con líneas diagonales */
+  background: repeating-linear-gradient(
+    45deg,
+    #ff8000,
+    #ff8000 10px,
+    #ff9933 10px,
+    #ff9933 20px
+  );
+}
+
+/* Botón volver */
+.back-btn{
+  position:fixed; top:14px; left:14px; z-index:10;
+  background:#000; color:#fff; text-decoration:none;
+  padding:10px 14px; border-radius:10px; font-weight:700;
+  box-shadow:0 6px 14px rgba(0,0,0,.25);
+  transition: transform .15s ease, opacity .15s ease;
+}
+.back-btn:hover{ transform: translateY(-1px); opacity:.95; }
+
+/* Contenedor */
+.wrap{
+  max-width: 1100px;
+  margin: 90px auto 40px;
+  padding: 0 16px;
+}
+
+/* Tarjeta del logo (coherente con historia/misión) */
+.logo-card{
+  background:#fff;
+  border-radius:18px;
+  padding:22px 10px;
+  display:flex; justify-content:center; align-items:center;
+  box-shadow: 0 18px 50px rgba(0,0,0,.20);
+  margin-bottom:18px;
+}
+.logo{
+  width:min(180px, 60%); height:auto; display:block;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
+}
+
+/* Título con contorno negro */
+.title{
+  text-align:center;
+  margin: 4px auto 18px;
+  font-weight:800;
+  font-size: clamp(1.2rem, 3.6vw, 2.2rem);
+  color: var(--orange);
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+/* Tarjeta principal */
+.card{
+  background: var(--paper);
+  border-radius:18px;
+  padding: 22px;
+  box-shadow: 0 22px 60px rgba(0,0,0,.22);
+}
+
+/* Grilla responsiva */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+@media (max-width: 900px){
+  .grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+/* Tarjeta de cada plataforma */
+.platform{
+  background:#fff;
+  border-radius:14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  padding:16px;
+  display:flex; align-items:center; gap:14px;
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.platform:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0,0,0,.16);
+}
+.platform__logo{
+  width:84px; height:84px; object-fit:contain; flex:0 0 84px;
+  border-radius:10px; background:#f3f4f6;
+}
+.platform__body{
+  display:flex; flex-direction:column; gap:6px; min-width:0;
+}
+.platform__name{
+  margin:0; font-weight:800; color:#111827; font-size:1rem;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.platform__link{
+  width:max-content;
+  background: var(--orange-2); color:#fff; text-decoration:none;
+  padding:8px 12px; border-radius:10px; font-weight:700;
+  box-shadow: 0 6px 14px rgba(0,0,0,.12);
+  transition: transform .12s ease, filter .2s ease, opacity .2s ease;
+}
+.platform__link:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+
+/* Footer */
+.footer{
+  margin-top: 18px;
+  text-align:center;
+  color:#475569;
+  font-weight:600;
+}
+
+/* Ajustes móviles */
+@media (max-width: 640px){
+  .back-btn{ top:10px; left:10px; padding:9px 12px; border-radius:8px; }
+  .card{ padding:18px; }
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reportes</title>
+
+  <link rel="stylesheet" href="css/reportes.css" />
+
+  <!-- Librerías para exportar -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <script defer src="js/reportes.js"></script>
+</head>
+<body>
+  <a class="back-btn" href="dashboard.html">Volver al inicio</a>
+
+  <main class="wrap">
+    <div class="logo-card">
+      <h1 class="title">Reportes</h1>
+      <p class="subtitle">Generar reportes.</p>
+    </div>
+
+    <!-- ================= CARNETS DE DOCENTES ================= -->
+    <section class="card" id="cardCarnets">
+      <h2 class="section-title">Carnets de Docentes</h2>
+      <div class="toolbar">
+        <div class="filters">
+          <input id="buscarCarnet" class="search" placeholder="Buscar por nombre o código…">
+          <button id="btnCarnetsConsultar" class="btn-primary">Consultar</button>
+        </div>
+        <div class="export">
+          <button data-export="img" class="btn-outline">Imagen</button>
+          <button data-export="pdf" class="btn-outline">PDF</button>
+          <button data-export="xlsx" class="btn-outline">Excel</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="tblCarnets">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Docente</th>
+              <th>Código</th>
+              <th>N° Carnet</th>
+              <th>Estado</th>
+              <th>Emitido</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= ASISTENCIA DIARIA ================= -->
+    <section class="card" id="cardAsistencia">
+      <h2 class="section-title">Asistencia diaria de docentes</h2>
+      <div class="toolbar">
+        <div class="filters">
+          <label for="asisFecha">Fecha</label>
+          <input id="asisFecha" type="date" />
+          <button id="btnAsisConsultar" class="btn-primary">Consultar</button>
+        </div>
+        <div class="export">
+          <button data-export="img" class="btn-outline">Imagen</button>
+          <button data-export="pdf" class="btn-outline">PDF</button>
+          <button data-export="xlsx" class="btn-outline">Excel</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="tblAsistencias">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Docente</th>
+              <th>Código</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Estado</th>
+              <th>Observación</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= PERMISOS POR MES ================= -->
+    <section class="card" id="cardPermisos">
+      <h2 class="section-title">Permisos por mes (por docente)</h2>
+      <div class="toolbar">
+        <div class="filters">
+          <label for="perMes">Mes</label>
+          <input id="perMes" type="month" />
+          <select id="perDocente" class="filter-select">
+            <option value="">Todos los docentes</option>
+          </select>
+          <button id="btnPerConsultar" class="btn-primary">Consultar</button>
+        </div>
+        <div class="export">
+          <button data-export="img" class="btn-outline">Imagen</button>
+          <button data-export="pdf" class="btn-outline">PDF</button>
+          <button data-export="xlsx" class="btn-outline">Excel</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="tblPermisos">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Docente</th>
+              <th>Código</th>
+              <th>Tipo</th>
+              <th>Desde</th>
+              <th>Hasta</th>
+              <th>Estado</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= SOLICITUD DE PERMISO LABORAL ================= -->
+    <section class="card" id="cardSolicitud">
+      <h2 class="section-title">Solicitud de permiso laboral</h2>
+
+      <div class="toolbar">
+        <div class="filters grid-2">
+          <div class="field">
+            <label>Docente</label>
+            <select id="solDocente" class="filter-select">
+              <option value="">Seleccione…</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>DPI / Código de barras</label>
+            <input id="solDpi" type="text" placeholder="Ej: 1234 56789 0101" />
+          </div>
+
+          <div class="field">
+            <label>Ciudad</label>
+            <input id="solCiudad" type="text" value="Guastatoya" />
+          </div>
+
+          <div class="field">
+            <label>Fecha de solicitud</label>
+            <input id="solFecha" type="date" />
+          </div>
+
+          <div class="field field-100">
+            <label>Motivo / Justificación</label>
+            <textarea id="solMotivo" rows="3" placeholder="Describa el motivo. Adjuntar constancias si corresponde…"></textarea>
+          </div>
+
+          <div class="subsection"><span>Autorización (Director)</span></div>
+
+          <div class="field">
+            <label>Ausencia desde</label>
+            <input id="autDesde" type="date" />
+          </div>
+
+          <div class="field">
+            <label>Ausencia hasta</label>
+            <input id="autHasta" type="date" />
+          </div>
+
+          <div class="field field-100">
+            <label>Forma</label>
+            <div class="radio-row">
+              <label><input type="radio" name="autForma" value="CON GOCE DE SALARIO" checked> Con goce de salario (Art. 27)</label>
+              <label><input type="radio" name="autForma" value="CON GOCE DE MEDIO SALARIO O LO DISPUESTO POR EL IGSS"> Con goce de medio salario / IGSS</label>
+              <label><input type="radio" name="autForma" value="SIN GOCE DE SALARIO"> Sin goce de salario</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Fecha autorización</label>
+            <input id="autFecha" type="date" />
+          </div>
+
+          <div class="field">
+            <label>Coordinadora</label>
+            <input id="autCoord" type="text" value="Licda. Alejandra Rivas" />
+          </div>
+
+          <div class="field">
+            <label>Director</label>
+            <input id="autDirector" type="text" value="Rep. Legal Daniel López Solís" />
+          </div>
+
+          <div class="actions field-100">
+            <button id="btnPrevisualizar" class="btn-primary">Previsualizar</button>
+          </div>
+        </div>
+
+        <div class="export">
+          <button data-export="img" class="btn-outline">Imagen</button>
+          <button data-export="pdf" class="btn-outline">PDF</button>
+        </div>
+      </div>
+
+      <!-- Hoja A4 imprimible -->
+      <div id="solicitudPreview" class="sheet a4" hidden>
+        <div class="sheet-inner">
+          <header class="sheet-header">
+            <img id="colegioLogo" class="colegio-logo" src="../img/logo.png"
+                 alt="Logo del Colegio" crossorigin="anonymous"
+                 onerror="this.style.display='none'" width="50" height="50">
+            <div class="colegio">COLEGIO DE CIENCIAS COMERCIALES “EL PROGRESO”</div>
+            <div class="colegio-sub">Barrio El Porvenir, Guastatoya, El Progreso · Tel. 7945 1265, 7945 0640 y 7945 0641 · E-Mail: ofiscerco10@gmail.com</div>
+          </header>
+
+          <!-- 1) Solicitud -->
+          <section class="box">
+            <div class="box-title">SOLICITUD DE PERMISO LABORAL</div>
+            <div class="line">Guastatoya, <span data-f="sol-dia"></span> de <span data-f="sol-mes"></span> de <span data-f="sol-anio"></span></div>
+            <div class="mt8">Señor Patrono</div>
+            <div>COLEGIO DE CIENCIAS COMERCIALES EL PROGRESO<br>Presente.</div>
+
+            <div class="mt10">Yo: <span class="u" data-f="docente"></span> con DPI No. <span class="u" data-f="dpi"></span>.</div>
+            <div class="mt6">Atentamente me dirijo a usted para solicitarle me conceda autorización para ausentarme de la empresa el día(s) <span class="u" data-f="aut-fecha-rango"></span> de <span class="u" data-f="sol-anio"></span>. Por el siguiente motivo:</div>
+
+            <div class="motivo" data-f="motivo"></div>
+<div>
+&#8203;
+</div>
+            <div class="firma-line">Firma</div>
+          </section>
+
+          <!-- 2) Autorización -->
+          <section class="box">
+            <div class="box-title">AUTORIZACIÓN DE PERMISO LABORAL</div>
+            <div>El/La Infrascrito/a Director/a del COLEGIO DE CIENCIAS COMERCIALES EL PROGRESO, autoriza a: <span class="u" data-f="docente"></span> para ausentarse de la empresa el día(s) <span class="u" data-f="aut-fecha-rango"></span>, en la siguiente forma:</div>
+
+            <div class="mt8">
+              <div>[ <span data-f="marca-1"> </span> ] CON GOCE DE SALARIO (ver artículo 27 Reglamento Interno de Trabajo del Colegio)</div>
+              <div>[ <span data-f="marca-2"> </span> ] CON GOCE DE MEDIO SALARIO O LO DISPUESTO POR EL IGSS (Por enfermedad)</div>
+              <div>[ <span data-f="marca-3"> </span> ] SIN GOCE DE SALARIO (los casos no contemplados en los incisos anteriores)</div>
+            </div>
+<div>
+&#8203;
+</div>
+            <div class="firma-grid mt12">
+              <div>
+                <div class="firma-blank"></div>
+                <div class="firma-name" data-f="coord">Coordinadora</div>
+              </div>
+              <div class="aprob">APROBADO</div>
+              <div>
+                <div class="firma-blank"></div>
+                <div class="firma-name" data-f="director">Director</div>
+              </div>
+            </div>
+
+            <div class="mt10">Guastatoya, <span data-f="aut-dia"></span> de <span data-f="aut-mes"></span> de <span data-f="aut-anio"></span>.</div>
+          </section>
+
+          <!-- 3) Registro en contabilidad (en blanco) -->
+          <section class="box">
+            <div class="box-title">REGISTRO EN CONTABILIDAD</div>
+            <div>Operado en Planilla de salarios, con base a los siguientes datos: [ □ ½ ] [ □ ] Salario Completo</div>
+
+            <div class="cont-grid mt10">
+              <div>
+                <div><strong>DÍAS ________</strong></div>
+                <div>Descontados con valor c/u de Q <span class="blank-line w80"></span>     TOTAL: Q <span class="blank-line w80"></span></div>
+              </div>
+              <div>
+                <div><strong>HORAS ________</strong></div>
+                <div>Descontadas con valor c/u de Q <span class="blank-line w80"></span>     TOTAL: Q <span class="blank-line w80"></span></div>
+              </div>
+            </div>
+<div>
+&#8203;
+</div>
+            <div class="firma-line mt18">Contadora</div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

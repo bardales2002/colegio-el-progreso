@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carnets de Docentes</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/carnets.css"/>
+
+  <!-- JsBarcode (Code128) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+
+  <!-- Exportar PDF/Excel (del listado) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <!-- Lógica -->
+  <script defer src="js/carnets.js"></script>
+</head>
+<body>
+  <a class="back-btn" href="dashboard.html">Volver al inicio</a>
+
+  <main class="wrap">
+    <div class="logo-card">
+      <h1 class="title">Carnets de Docentes</h1>
+      <p class="subtitle">Genera un código de barras único por docente usando su DPI (13 dígitos).</p>
+    </div>
+
+    <!-- Crear carnet -->
+    <section class="card">
+      <h2 class="section-title">Crear nuevo carnet</h2>
+
+      <form id="frmCarnet" class="grid" novalidate>
+        <div class="field">
+          <label for="docente_codigo">Docente</label>
+          <select id="docente_codigo" required>
+            <option value="">Seleccione…</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="dpi">DPI (13 dígitos)</label>
+          <!-- CORRECCIÓN: type="text", pattern correcto y limpieza -->
+          <input
+            id="dpi"
+            name="dpi"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            pattern="[0-9]{13}"
+            maxlength="13"
+            placeholder="Ej: 1234567890123"
+            title="Debe contener exactamente 13 dígitos (0–9)."
+            required
+          />
+          <small class="hint">Debe tener exactamente 13 dígitos.</small>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="submit">Crear carnet</button>
+          <button class="btn-secondary" type="button" id="btnPreview">Previsualizar código</button>
+        </div>
+      </form>
+
+      <!-- Previsualización del barcode -->
+      <div class="preview">
+        <svg id="previewBarcode"></svg>
+        <div class="preview-actions">
+          <button class="btn-outline" id="btnDownloadPreview">Descargar PNG</button>
+          <button class="btn-outline" id="btnPrintPreview">Imprimir</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Listado -->
+    <section class="card">
+      <div class="toolbar">
+        <input id="buscar" class="search" placeholder="Buscar por DPI, código o nombre…">
+        <div class="export">
+          <button id="btnPdf" class="btn-outline">PDF</button>
+          <button id="btnExcel" class="btn-outline">Excel</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="tablaCarnets">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Docente</th>
+              <th>Código Docente</th>
+              <th>DPI</th>
+              <th>Código de barras</th>
+              <th>Creado</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody><!-- filas dinámicas --></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Docentes</title>
+
+  <!-- Estilos del módulo -->
+  <link rel="stylesheet" href="css/docentes.css">
+
+  <!-- Librerías para exportar PDF/Excel -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <a class="btn-back" href="dashboard.html">⬅ Volver</a>
+
+  <main class="wrap">
+    <h1 class="title">Gestión de Docentes</h1>
+
+    <!-- Formulario -->
+    <section class="card">
+      <form id="docenteForm" class="form-grid">
+        <input type="hidden" id="editIndex">
+
+        <div class="field">
+          <label for="codigo">Código</label>
+          <input id="codigo" required placeholder="DOC-001">
+        </div>
+
+        <div class="field">
+          <label for="nombres">Nombres</label>
+          <input id="nombres" required>
+        </div>
+
+        <div class="field">
+          <label for="apellidos">Apellidos</label>
+          <input id="apellidos" required>
+        </div>
+
+        <div class="field">
+          <label for="fechaNacimiento">Fecha de Nacimiento</label>
+          <input id="fechaNacimiento" type="date" required>
+        </div>
+
+        <div class="field">
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" placeholder="(opcional)">
+        </div>
+
+        <div class="field">
+          <label for="email">Correo</label>
+          <input id="email" type="email" placeholder="(opcional)">
+        </div>
+
+        <div class="field">
+          <label for="anioIngreso">Año de Ingreso</label>
+          <input id="anioIngreso" type="number" required min="1980" max="2099">
+        </div>
+
+        <div class="actions">
+          <button id="btnGuardar" class="btn-primary" type="submit">Guardar</button>
+          <button id="btnCancelar" class="btn-secondary" type="button">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Tabla -->
+    <section class="card">
+      <div class="toolbar">
+        <input id="buscar" class="search" placeholder="Buscar por código, nombre o apellido…">
+        <div class="export">
+          <button id="btnPdf" class="btn-outline">PDF</button>
+          <button id="btnExcel" class="btn-outline">Excel</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="tablaDocentes">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>F. Nacimiento</th>
+              <th>Teléfono</th>
+              <th>Correo</th>
+              <th>Año de ingreso</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lógica del módulo -->
+  <script defer src="js/docentes.js"></script>
+</body>
+</html>

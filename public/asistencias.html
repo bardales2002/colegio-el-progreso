@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asistencias</title>
+
+  <link rel="stylesheet" href="css/asistencias.css"/>
+
+  <!-- Exportaciones -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <script defer src="js/asistencias.js"></script>
+</head>
+<body>
+  <a class="back-btn" href="dashboard.html">Volver al inicio</a>
+
+  <main class="wrap">
+    <div class="logo-card">
+      <h1 class="title">Asistencias de Docentes y Encargados</h1>
+      <p class="subtitle">Escanea el <strong>DPI (código de barras)</strong> del carnet. Primer registro = Hora de entrada, Segundo registro = Hora de salida.</p>
+    </div>
+
+    <!-- Escáner -->
+    <section class="card">
+      <h2 class="section-title">Escanear</h2>
+
+      <form id="frmScan" class="scan-box" autocomplete="off" novalidate>
+        <input id="scan" type="text" inputmode="numeric" maxlength="13"
+               placeholder="Enfoca aquí y escanea el DPI (13 dígitos)" autofocus>
+        <button type="submit" class="btn-primary">Registrar</button>
+      </form>
+
+      <div id="lastEvent" class="last-event hidden"></div>
+    </section>
+
+    <!-- Listado -->
+    <section class="card">
+      <div class="toolbar">
+        <div class="dates">
+          <label>Fecha</label>
+          <input type="date" id="fecha">
+          <button id="btnHoy" class="btn-sm">Hoy</button>
+          <button id="btnSemana" class="btn-sm">Semana</button>
+        </div>
+        <input id="buscar" class="search" placeholder="Buscar por nombre, código o DPI…">
+        <div class="export">
+          <button id="btnPdf" class="btn-outline">PDF</button>
+          <button id="btnExcel" class="btn-outline">Excel</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="tablaAsist">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Docente</th>
+              <th>Código</th>
+              <th>DPI</th>
+              <th>Entrada</th>
+              <th>Salida</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody><!-- filas dinámicas --></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

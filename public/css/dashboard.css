@@ -1,0 +1,298 @@
+/* TIPOGRAFÍAS */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@400;700&display=swap');
+
+/* BASE */
+:root{
+  --orange:#ff6600;
+  --orange-2:#ff7a00;
+  --dark:#0b1326;
+  --dark-2:#1e293b;
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#fff;
+  margin:0;
+}
+
+/* HEADER */
+.topbar{
+  background: linear-gradient(to right, #000 12%, var(--orange) 45%);
+  height:auto;
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between; /* Asegura que logo, título y botón se distribuyan bien */
+  gap:18px;
+  padding:10px 16px;
+  margin-bottom:10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+}
+.logo-head{ width:100px; height:auto; }
+.title{
+  color:#fff;
+  margin:0;
+  font-weight:800;
+  font-size: clamp(1.1rem, 2.4vw, 2.1rem);
+  flex:1;
+  text-align: center; /* Centra el título */
+}
+.btn-logout{
+  background:#fff; color:#000;
+  padding:10px 18px; border-radius:8px; border:0;
+  font-weight:700; text-decoration:none; cursor:pointer;
+  display:flex; align-items:center; gap:8px;
+  box-shadow:0 4px 8px rgba(0,0,0,.15);
+  transition:.2s;
+}
+.btn-logout:hover{ transform: translateY(-2px); }
+
+/* LAYOUT */
+.main-container{
+  display:flex; gap:16px;
+  height: calc(100vh - 100px);
+  padding: 0 12px 12px;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:25%;
+  background: url('../img/fondo.jpg');
+  background-size: cover; background-position:center;
+  padding:20px; border-radius:12px; overflow:auto;
+}
+.logo-side{ width:180px; display:block; margin:0 auto 10px; }
+.about-title {
+  font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+  color: #cc3300;
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .12);
+  text-align: center;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.seccion-especial{
+  list-style:none; margin:16px 0 0; padding:20px; border-radius:10px;
+  background:#f2f2f2; box-shadow:0 6px 14px rgba(0,0,0,.08);
+}
+.seccion-especial li{ margin:10px 0; }
+.seccion-especial a{ color:var(--orange); text-decoration:none; font-weight:700; }
+.seccion-especial a:hover{ text-decoration:underline; }
+
+.logo-container {
+  background: #fff;                /* Fondo blanco */
+  padding: 15px;                   /* Espacio alrededor del logo */
+  border-radius: 12px;             /* Bordes redondeados */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Sombra suave */
+  display: flex;                   /* Centrado */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;             /* Separación del título */
+}
+
+.logo-container img {
+  max-width: 150px;                /* Ajusta tamaño del logo */
+  height: auto;
+}
+
+
+/* CONTENIDO */
+.content{
+  width:75%;
+  padding:20px; overflow:auto; border-radius:12px;
+  background: radial-gradient(1200px 500px at 10% 0%, rgba(255,102,0,.12), transparent 40%),
+              radial-gradient(1200px 500px at 90% 100%, rgba(0,0,0,.08), transparent 40%),
+              linear-gradient(180deg, #fb7a01, #365386);
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  color:#fff;
+}
+
+.centered{
+  text-align:center; color:var(--orange);
+  margin:6px 0 14px; font-weight:900;
+  color:white;
+}
+
+/* CARRUSEL */
+.image-slider{
+  position:relative; max-width:100%;
+  overflow:hidden; border-radius:10px;
+}
+.image-slider img{
+  display:none; width:100%; height:auto; object-fit:cover;
+  border-radius:8px;
+}
+.image-slider img.active{ display:block; }
+.dots{ text-align:center; margin-top:10px; }
+.dot{
+  width:10px; height:10px; display:inline-block;
+  background:#bbb; border-radius:50%; margin:0 5px; cursor:pointer;
+}
+.dot.active-dot{ background:#717171; }
+
+/* BLOQUE DE PROGRAMAS */
+.programas h3{ color:var(--orange); margin-top:26px; }
+h3 {
+  color: #ff6600; /* Naranja */
+  font-weight: bold;
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Sombra en las 4 direcciones */
+}
+
+.programas p{ color:#e5e7eb; }
+
+.icon-row{
+  display:flex; gap:22px; justify-content:center; margin-top:24px; flex-wrap:wrap;
+}
+.icon-row img{ width:140px; height:auto; object-fit:contain; }
+
+/* RESPONSIVE */
+@media (max-width: 992px){
+  .main-container{ flex-direction:column; height:auto; }
+  .sidebar{ width:100%; order:2; }
+  .content{ width:100%; order:1; }
+}
+@media (max-width: 768px){
+  .topbar{ flex-direction:column; align-items:flex-start; }
+  .btn-logout{ align-self:flex-end; }
+}
+@media (max-width: 600px){
+  .icon-row img{ width:100px; }
+}
+.sidebar--b{
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.15), transparent 35%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 6px, rgba(0,0,0,.04) 6px 12px),
+    linear-gradient(180deg, #ff7a00, #ff6600);
+}
+
+.sub-nav {
+    width: 100%;
+    background: linear-gradient(to right, #ff6600, #ff9900);
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    gap: 15px;
+    padding: 10px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+}
+
+.sub-nav-btn {
+    background-color: white;
+    color: #ff6600;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sub-nav-btn:hover {
+    background-color: #ffe0b2;
+    transform: scale(1.05);
+}
+
+
+/* ======== USER CHIP + LOGOUT (encabezado) ======== */
+
+/* Contenedor del nombre + botón (derecha del header) */
+.session-box{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Pastilla con el nombre del usuario */
+.user-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  color:#111;
+  border-radius:999px;
+  padding:6px 12px;
+  font-weight:700;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  max-width:40vw;               /* evita que se coma el título */
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Botón cerrar sesión (si ya tienes estilos, puedes omitir/ajustar) */
+.btn-logout{
+  background:#000;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:8px 12px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* Si tu .topbar no usa flex, esto lo alinea; si ya usas flex, puedes omitir */
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+/* Que el título empuje todo a la derecha, pero sin desbordar */
+.topbar .title{
+  flex:1;               /* ocupa el espacio restante */
+  margin:0;
+}
+
+/* Responsivo: acorta el chip en pantallas pequeñas */
+@media (max-width: 960px){
+  .user-badge{ max-width:52vw; }
+}
+
+/* ==== Badge de usuario – SIN CAMBIAR TU DISEÑO ==== */
+
+.session-box{
+  display:flex;
+  flex-direction:column;   /* Badge arriba, botón abajo */
+  align-items:flex-end;    /* alineado a la derecha, como tu botón */
+  gap:8px;
+}
+
+.user-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  color:#111;
+  border-radius:999px;
+  padding:6px 12px;
+  font-weight:700;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+
+.user-badge .uicon{
+  width:22px; height:22px;
+  border-radius:50%;
+  display:inline-grid; place-items:center;
+  background:#ffffff;  /* morado suave, puede cambiarse */
+  color:#fff;
+  font-size:13px;
+}
+
+/* En móvil, que quede centrado bajo el botón */
+@media (max-width: 768px){
+  .session-box{ align-items:center; }
+}

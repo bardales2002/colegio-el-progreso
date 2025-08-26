@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio – CCCP</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS de esta página -->
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <img src="img/logocolegio.jpg" alt="Logo CCCP" class="logo-head">
+    <h1 class="title">Colegio de Ciencias Comerciales El Progreso</h1>
+
+    <!-- Caja de usuario (badge arriba, botón abajo) -->
+    <div class="session-box">
+      <!-- Badge del usuario (ID correcto y SIN 'hidden') -->
+      <div id="user-badge" class="user-badge">
+        <span class="usr-ico">👤</span>
+        (user) | correo
+      </div>
+
+      <!-- Botón de cerrar sesión -->
+      <button id="logoutBtn" class="btn-logout">⬅️📚 Cerrar sesión</button>
+    </div>
+  </header>
+
+  <!-- Sub navegación -->
+  <div class="sub-nav">
+    <button class="sub-nav-btn" onclick="window.location.href='docentes.html'">👩‍🏫 Docentes</button>
+    <button class="sub-nav-btn" onclick="window.location.href='carnets.html'">🪪 Carnets</button>
+    <button class="sub-nav-btn" onclick="window.location.href='asistencias.html'">🕒 Asistencias</button>
+  </div>
+ <div class="sub-nav">
+     <button class="sub-nav-btn" onclick="window.location.href='permisos.html'">📝 Permisos</button>
+      <button class="sub-nav-btn" onclick="window.location.href='reportes.html'">📑 Reportes</button>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="main-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar sidebar--b">
+      <div class="about-section">
+        <div class="logo-container">
+          <img src="img/logo.png" alt="Escudo" class="logo-side">
+        </div>
+        <h2 class="about-title">Acerca del Colegio</h2>
+      </div>
+
+      <ul class="seccion-especial">
+        <li>📚 <a href="/historia.html">Historia del Colegio</a></li>
+        <li>🎯 <a href="/mision_vision.html">Misión y Visión</a></li>
+        <li>👨‍🏫 <a href="/personal_docente.html">Personal Docente</a></li>
+        <li>🏢 <a href="/infraestructura.html">Infraestructura</a></li>
+        <li>📜 <a href="/reglamentos_politica.html">Reglamentos y Políticas</a></li>
+        <li>💻 <a href="/plataformas_recursos.html">Plataformas y Recursos</a></li>
+        <li>🎓 <a href="/perfil_docente.html">Perfil del Docente</a></li>
+        <li>📞 <a href="/contactanos.html">Contactos</a></li>
+      </ul>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <section class="content">
+      <h2 class="centered">⭐ CREANDO PARA LA EDUCACIÓN ⭐</h2>
+
+      <div class="image-slider">
+        <img src="img/Valores.jpg"  alt="Valores"     class="active">
+        <img src="img/Colegioo.jpg" alt="Colegio">
+        <img src="img/col.jpeg"     alt="Colegio 2">
+        <img src="img/entrada.jpeg" alt="Entrada">
+      </div>
+      <div class="dots">
+        <span class="dot active-dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+
+      <article class="programas">
+        <h3>Preprimaria y Primaria</h3>
+        <p>Se desarrollarán destrezas jugando y experimentando, con docentes capacitados y en constante actualización, en un ambiente digital enriquecido, con actividades que le harán sentir que aprender es divertido.</p>
+
+        <h3>Ciclo de educación Básica</h3>
+        <p>En el #ColegioCiencias contamos con una metodología moderna que motiva el aprendizaje activo, permitiendo que los estudiantes sean los protagonistas de su proceso educativo.</p>
+
+        <h3>Diversificado</h3>
+        <p>Carreras: Perito Contador con Orientación en Computación, Bachillerato en Diseño Gráfico y Bachillerato en Ciencias y Letras con Orientación en Computación.</p>
+
+        <div class="icon-row">
+          <img src="img/cohete.png"     alt="Cohete">
+          <img src="img/adolecente.png" alt="Alumno">
+          <img src="img/diploma.png"    alt="Diploma">
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <!-- JS de esta página -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

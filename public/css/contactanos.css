@@ -1,0 +1,147 @@
+:root{
+  --orange:#fff7f1;   /* para títulos con contorno */
+  --orange-2:#ff7a00; /* naranja principal */
+  --ink:#0f172a;
+  --paper:#ffffff;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family:'Montserrat', system-ui, Segoe UI, Arial, sans-serif;
+  line-height:1.7;
+  color:var(--ink);
+
+  /* Fondo naranja con líneas diagonales (coherente con el sitio) */
+  background: repeating-linear-gradient(
+    45deg,
+    #ff8000,
+    #ff8000 10px,
+    #ff9933 10px,
+    #ff9933 20px
+  );
+}
+
+/* Botón volver */
+.back-btn{
+  position:fixed; top:14px; left:14px; z-index:10;
+  background:#000; color:#fff; text-decoration:none;
+  padding:10px 14px; border-radius:10px; font-weight:700;
+  box-shadow:0 6px 14px rgba(0,0,0,.25);
+  transition: transform .15s ease, opacity .15s ease;
+}
+.back-btn:hover{ transform: translateY(-1px); opacity:.95; }
+
+/* Contenedor principal */
+.wrap{
+  max-width: 980px;
+  margin: 90px auto 40px;  /* espacio superior para el botón fijo */
+  padding: 0 16px;
+}
+
+/* Tarjeta del logo */
+.logo-card{
+  background:#fff;
+  border-radius:18px;
+  padding:22px 10px;
+  display:flex; justify-content:center; align-items:center;
+  box-shadow: 0 18px 50px rgba(0,0,0,.20);
+  margin-bottom:18px;
+}
+.logo{
+  width:min(180px, 60%); height:auto; display:block;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
+}
+
+/* Título con contorno negro */
+.title{
+  text-align:center;
+  margin: 4px auto 18px;
+  font-weight:800;
+  font-size: clamp(1.2rem, 3.6vw, 2.2rem);
+  color: var(--orange);
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+/* Tarjeta de contenido */
+.card{
+  background: var(--paper);
+  border-radius:18px;
+  padding: 22px;
+  box-shadow: 0 22px 60px rgba(0,0,0,.22);
+}
+
+/* Lista de contacto */
+.contact-list{
+  list-style:none; padding:0; margin:0 0 12px;
+}
+.contact-item{
+  display:flex; align-items:center; gap:12px;
+  padding:12px 0; border-bottom:1px solid #e5e7eb;
+  flex-wrap:wrap;
+}
+.contact-item:last-child{ border-bottom:0; }
+
+.icon{
+  width:30px; height:30px; object-fit:contain; flex:0 0 30px;
+}
+.contact-item span{
+  font-size:1rem; color:#111827;
+}
+
+/* Subtítulo */
+.subtitle{
+  margin: 16px 0 12px;
+  font-weight:800;
+  color: var(--orange-2);
+  text-align:center;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+/* Grid de redes sociales */
+.social-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media (max-width: 760px){
+  .social-grid{ grid-template-columns: 1fr; }
+}
+
+.social{
+  display:flex; align-items:center; gap:12px;
+  background:#fff; border-radius:12px; padding:12px;
+  text-decoration:none; color:#111827; font-weight:700;
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.social:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0,0,0,.16);
+}
+.icon-lg{
+  width:38px; height:38px; object-fit:contain; flex:0 0 38px;
+}
+
+/* Footer */
+.footer{
+  margin-top: 18px;
+  text-align:center;
+  color:#475569;
+  font-weight:600;
+}
+
+/* Ajustes móviles */
+@media (max-width: 640px){
+  .back-btn{ top:10px; left:10px; padding:9px 12px; border-radius:8px; }
+  .card{ padding:18px; }
+}

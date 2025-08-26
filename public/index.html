@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso al sistema</title>
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <div class="login-container">
+<img src="img/logocolegio.jpg" alt="Logo Colegio" class="logo">
+    <h1>Colegio de Ciencias Comerciales El Progreso</h1>
+    <form id="loginForm">
+      <label for="username">Usuario</label>
+      <input type="email" id="username" name="username" placeholder="Correo electrónico" required>
+
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" placeholder="" required>
+
+      <button type="submit">Ingresar</button>
+      <div class="error" id="error"></div>
+    </form>
+    <p class="note">No existe opción de crear cuenta. Consulte al administrador.</p>
+  </div>
+
+  <script src="js/index.js"></script>
+</body>
+</html>

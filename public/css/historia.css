@@ -1,0 +1,116 @@
+/* Paleta y tipografía */
+:root{
+  --orange:#fff7f1;
+  --orange-2:#ff7a00;
+  --ink:#0b1326;
+  --paper:#ffffff;
+  --muted:#94a3b8;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family:'Montserrat',system-ui,Segoe UI,Arial,sans-serif;
+  line-height:1.7;
+  color:#0f172a;
+
+  /* Fondo animado en la gama del sitio (naranja/azul oscuro) */
+background: repeating-linear-gradient(
+    45deg,
+    #ff8000,
+    #ff8000 10px,
+    #ff9933 10px,
+    #ff9933 20px
+);
+}
+
+/* Botón volver */
+.back-btn{
+  position:fixed; top:14px; left:14px; z-index:10;
+  background:#000; color:#fff; text-decoration:none;
+  padding:10px 14px; border-radius:10px; font-weight:700;
+  box-shadow:0 6px 14px rgba(0,0,0,.25);
+  transition: transform .15s ease, opacity .15s ease;
+}
+.back-btn:hover{ transform: translateY(-1px); opacity:.95; }
+
+/* Contenedor general */
+.wrap{
+  max-width: 980px;
+  margin: 90px auto 40px;       /* deja espacio para el botón fijo */
+  padding: 0 16px;
+}
+
+/* Tarjeta del logo */
+.logo-card{
+  background:#fff;
+  border-radius:18px;
+  padding:22px 10px;
+  display:flex; justify-content:center; align-items:center;
+  box-shadow: 0 18px 50px rgba(0,0,0,.20);
+  margin-bottom:18px;
+}
+.logo{
+  width:min(180px, 60%); height:auto; display:block;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
+}
+
+/* Título naranja con “borde” negro (text-shadow en 4 direcciones) */
+.title{
+  text-align:center;
+  margin: 4px auto 18px;
+  font-weight:800;
+  font-size: clamp(1.2rem, 3.6vw, 2.2rem);
+  color: var(--orange);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
+               -1px  1px 0 #000, 1px  1px 0 #000;
+}
+
+/* Tarjeta del contenido */
+.card{
+  background:#ffffff;
+  border-radius:18px;
+  padding: 22px;
+  box-shadow: 0 22px 60px rgba(0,0,0,.22);
+}
+
+/* Texto */
+.card p{
+  margin: 0 0 16px;
+  text-align: justify;
+  color:#0f172a;
+}
+
+/* Lista con “checks” naranjas */
+.checklist{
+  margin: 6px 0 18px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.checklist li{
+  position: relative;
+  margin: 8px 0 8px 28px;
+}
+.checklist li::before{
+  content: "✔";
+  color: var(--orange);
+  font-weight: 800;
+  position: absolute;
+  left: -28px; top: 0;
+}
+
+/* Footer */
+.footer{
+  margin-top: 10px;
+  text-align:center;
+  color:#475569;
+  font-weight:600;
+}
+
+/* Responsive */
+@media (max-width: 640px){
+  .back-btn{ top:10px; left:10px; padding:9px 12px; border-radius:8px; }
+  .logo{ width:min(150px, 70%); }
+  .card{ padding:18px; }
+}
